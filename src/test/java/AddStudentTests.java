@@ -1,7 +1,6 @@
 import domain.Nota;
 import domain.Student;
 import domain.Tema;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
@@ -13,6 +12,9 @@ import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
 import validation.Validator;
+
+import static org.junit.Assert.*;
+
 
 public class AddStudentTests {
 
@@ -69,7 +71,160 @@ public class AddStudentTests {
             {
                 studentWasAdded = true;
             }
-        Assert.assertFalse(studentWasAdded);
+        assertFalse(studentWasAdded);
     }
 
+    @Test
+    public void addStudent_Group_GroupNumberIs_110(){
+        Student addedStudent = new Student(validStudentIdNr, validStundentName, 110);
+        this.service.saveStudent(validStudentIdNr,validStundentName,110);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        assertFalse(studentWasAdded);
+    }
+
+    @Test
+    public void addStudent_Group_GroupNumberIs_111(){
+        Student addedStudent = new Student(validStudentIdNr, validStundentName, 111);
+        this.service.saveStudent(validStudentIdNr,validStundentName,111);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        Assert.assertTrue(studentWasAdded);
+        this.service.deleteStudent(validStudentIdNr);
+    }
+
+    @Test
+    public void addStudent_Group_GroupNumberIs_112(){
+        Student addedStudent = new Student(validStudentIdNr, validStundentName, 112);
+        this.service.saveStudent(validStudentIdNr,validStundentName,112);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        Assert.assertTrue(studentWasAdded);
+        this.service.deleteStudent(validStudentIdNr);
+    }
+
+    @Test
+    public void addStudent_Group_GroupNumberIs_936(){
+        Student addedStudent = new Student(validStudentIdNr, validStundentName, 936);
+        this.service.saveStudent(validStudentIdNr,validStundentName,936);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        Assert.assertTrue(studentWasAdded);
+        this.service.deleteStudent(validStudentIdNr);
+    }
+
+    @Test
+    public void addStudent_Group_GroupNumberIs_937(){
+        Student addedStudent = new Student(validStudentIdNr, validStundentName, 937);
+        this.service.saveStudent(validStudentIdNr,validStundentName,937);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        Assert.assertTrue(studentWasAdded);
+        this.service.deleteStudent(validStudentIdNr);
+    }
+
+    @Test
+    public void addStudent_Group_GroupNumberIs_938(){
+        Student addedStudent = new Student(validStudentIdNr, validStundentName, 938);
+        this.service.saveStudent(validStudentIdNr,validStundentName,938);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        assertFalse(studentWasAdded);
+    }
+
+    @Test
+    public void addStudent_Id_Null(){
+        try {
+            this.service.saveStudent(null,validStundentName,938);
+            assertTrue( "Student add should not work with null id!", false);
+        }
+        catch (Exception e)
+        {
+            assertTrue(  true);
+        }
+    }
+
+    @Test
+    public void addStudent_Name_Null(){
+        try {
+            this.service.saveStudent(validStudentIdNr,null,938);
+            assertTrue( "Student add should not work with null name!", false);
+        }
+        catch (Exception e)
+        {
+            assertTrue(  true);
+        }
+    }
+
+    @Test
+    public void addStudent_Id_Empty(){
+        Student addedStudent = new Student("               ", validStundentName, validGroup);
+        this.service.saveStudent("               ",validStundentName,validGroup);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        assertFalse(studentWasAdded);
+    }
+
+    @Test
+    public void addStudent_Name_Empty(){
+        Student addedStudent = new Student(validStudentIdNr, "    ", validGroup);
+        this.service.saveStudent(validStudentIdNr,"    ",validGroup);
+        Iterable<Student> students = this.service.findAllStudents();
+        boolean studentWasAdded = false;
+        for(Student s : students)
+            if(s.equals(addedStudent))
+            {
+                studentWasAdded = true;
+            }
+        assertFalse(studentWasAdded);
+    }
+
+    @Test
+    public void addStudent_SameStudentTwice(){
+        this.service.saveStudent(validStudentIdNr,validStundentName,validGroup);
+        try{
+            this.service.saveStudent(validStudentIdNr,validStundentName,validGroup);
+            assertTrue( "Not unique students should not be added!", false);
+        }
+        catch (Exception e)
+        {
+            assertTrue(  true);
+        }
+        this.service.deleteStudent(validStudentIdNr);
+    }
 }

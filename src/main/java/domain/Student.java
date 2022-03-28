@@ -8,8 +8,8 @@ public class Student implements HasID<String> {
     private int grupa;
 
     public Student(String idStudent, String nume, int grupa) {
-        this.idStudent = idStudent;
-        this.nume = nume;
+        this.idStudent = idStudent.strip();
+        this.nume = nume.strip();
         this.grupa = grupa;
     }
 

@@ -90,6 +90,10 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
         if (result == null) {
             writeToXmlFile();
         }
+        else
+        {
+            throw new ValidationException("Student Existent!");
+        }
         return result;
     }
 
