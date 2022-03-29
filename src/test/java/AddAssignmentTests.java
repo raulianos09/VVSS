@@ -56,6 +56,17 @@ public class AddAssignmentTests {
     }
 
     @Test
+    public void addAssignment_emptyAssignmentID(){
+        try {
+            service.saveTema("",validAssignmentDescription,validAssignmentStartWeek,validAssignmentEndWeek);
+            assertTrue("Assignment addition with null id should not be possible",false);
+        }
+        catch (Exception e) {
+            assertEquals("ID invalid! \n",e.getMessage());
+        }
+    }
+
+    @Test
     public void addAssignment_nullDescription()
     {
         try {
@@ -66,5 +77,18 @@ public class AddAssignmentTests {
             assertEquals("Descriere invalida! \n",e.getMessage());
         }
     }
+
+    @Test
+    public void addAssignment_emptyDescription()
+    {
+        try {
+            service.saveTema(validAssignmentId,"",validAssignmentStartWeek,validAssignmentEndWeek);
+            assertTrue("Assignment addition with null id should not be possible",false);
+        }
+        catch (Exception e) {
+            assertEquals("Descriere invalida! \n",e.getMessage());
+        }
+    }
+
 
 }

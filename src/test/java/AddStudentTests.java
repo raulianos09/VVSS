@@ -48,12 +48,11 @@ public class AddStudentTests {
     @Test
     public void addStudent_ValidData_Test() {
         Student addedStudent = new Student(validStudentIdNr, validStundentName, validGroup);
-        this.service.saveStudent(validStudentIdNr,validStundentName,validGroup);
+        this.service.saveStudent(validStudentIdNr, validStundentName, validGroup);
         Iterable<Student> students = this.service.findAllStudents();
         boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
+        for (Student s : students)
+            if (s.equals(addedStudent)) {
                 studentWasAdded = true;
             }
         Assert.assertTrue(studentWasAdded);
@@ -62,41 +61,32 @@ public class AddStudentTests {
 
     @Test
     public void addStudent_InvalidGroupNr_Test() {
-        Student addedStudent = new Student(validStudentIdNr, validStundentName, invalidGroup);
-        this.service.saveStudent(validStudentIdNr,validStundentName,invalidGroup);
-        Iterable<Student> students = this.service.findAllStudents();
-        boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
-                studentWasAdded = true;
-            }
-        assertFalse(studentWasAdded);
+        try {
+            this.service.saveStudent(validStudentIdNr, validStundentName, invalidGroup);
+            assertTrue("Invalid group exception should get thrown!", false);
+        } catch (Exception e) {
+            assertEquals("Grupa invalida! \n", e.getMessage());
+        }
     }
 
     @Test
-    public void addStudent_Group_GroupNumberIs_110(){
-        Student addedStudent = new Student(validStudentIdNr, validStundentName, 110);
-        this.service.saveStudent(validStudentIdNr,validStundentName,110);
-        Iterable<Student> students = this.service.findAllStudents();
-        boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
-                studentWasAdded = true;
-            }
-        assertFalse(studentWasAdded);
+    public void addStudent_Group_GroupNumberIs_110() {
+        try {
+            this.service.saveStudent(validStudentIdNr, validStundentName, 110);
+            assertTrue("Invalid group exception should get thrown!", false);
+        } catch (Exception e) {
+            assertEquals("Grupa invalida! \n", e.getMessage());
+        }
     }
 
     @Test
-    public void addStudent_Group_GroupNumberIs_111(){
+    public void addStudent_Group_GroupNumberIs_111() {
         Student addedStudent = new Student(validStudentIdNr, validStundentName, 111);
-        this.service.saveStudent(validStudentIdNr,validStundentName,111);
+        this.service.saveStudent(validStudentIdNr, validStundentName, 111);
         Iterable<Student> students = this.service.findAllStudents();
         boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
+        for (Student s : students)
+            if (s.equals(addedStudent)) {
                 studentWasAdded = true;
             }
         Assert.assertTrue(studentWasAdded);
@@ -104,14 +94,13 @@ public class AddStudentTests {
     }
 
     @Test
-    public void addStudent_Group_GroupNumberIs_112(){
+    public void addStudent_Group_GroupNumberIs_112() {
         Student addedStudent = new Student(validStudentIdNr, validStundentName, 112);
-        this.service.saveStudent(validStudentIdNr,validStundentName,112);
+        this.service.saveStudent(validStudentIdNr, validStundentName, 112);
         Iterable<Student> students = this.service.findAllStudents();
         boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
+        for (Student s : students)
+            if (s.equals(addedStudent)) {
                 studentWasAdded = true;
             }
         Assert.assertTrue(studentWasAdded);
@@ -119,14 +108,13 @@ public class AddStudentTests {
     }
 
     @Test
-    public void addStudent_Group_GroupNumberIs_936(){
+    public void addStudent_Group_GroupNumberIs_936() {
         Student addedStudent = new Student(validStudentIdNr, validStundentName, 936);
-        this.service.saveStudent(validStudentIdNr,validStundentName,936);
+        this.service.saveStudent(validStudentIdNr, validStundentName, 936);
         Iterable<Student> students = this.service.findAllStudents();
         boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
+        for (Student s : students)
+            if (s.equals(addedStudent)) {
                 studentWasAdded = true;
             }
         Assert.assertTrue(studentWasAdded);
@@ -134,14 +122,13 @@ public class AddStudentTests {
     }
 
     @Test
-    public void addStudent_Group_GroupNumberIs_937(){
+    public void addStudent_Group_GroupNumberIs_937() {
         Student addedStudent = new Student(validStudentIdNr, validStundentName, 937);
-        this.service.saveStudent(validStudentIdNr,validStundentName,937);
+        this.service.saveStudent(validStudentIdNr, validStundentName, 937);
         Iterable<Student> students = this.service.findAllStudents();
         boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
+        for (Student s : students)
+            if (s.equals(addedStudent)) {
                 studentWasAdded = true;
             }
         Assert.assertTrue(studentWasAdded);
@@ -149,81 +136,63 @@ public class AddStudentTests {
     }
 
     @Test
-    public void addStudent_Group_GroupNumberIs_938(){
-        Student addedStudent = new Student(validStudentIdNr, validStundentName, 938);
-        this.service.saveStudent(validStudentIdNr,validStundentName,938);
-        Iterable<Student> students = this.service.findAllStudents();
-        boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
-                studentWasAdded = true;
-            }
-        assertFalse(studentWasAdded);
-    }
-
-    @Test
-    public void addStudent_Id_Null(){
+    public void addStudent_Group_GroupNumberIs_938() {
         try {
-            this.service.saveStudent(null,validStundentName,938);
-            assertTrue( "Student add should not work with null id!", false);
-        }
-        catch (Exception e)
-        {
-            assertTrue(  true);
+            this.service.saveStudent(validStudentIdNr, validStundentName, 938);
+            assertTrue("Invalid group exception should get thrown!", false);
+        } catch (Exception e) {
+            assertEquals("Grupa invalida! \n", e.getMessage());
         }
     }
 
     @Test
-    public void addStudent_Name_Null(){
+    public void addStudent_Id_Null() {
         try {
-            this.service.saveStudent(validStudentIdNr,null,938);
-            assertTrue( "Student add should not work with null name!", false);
-        }
-        catch (Exception e)
-        {
-            assertTrue(  true);
+            this.service.saveStudent(null, validStundentName, 938);
+            assertTrue("Student add should not work with null id!", false);
+        } catch (Exception e) {
+            assertTrue(true);
         }
     }
 
     @Test
-    public void addStudent_Id_Empty(){
-        Student addedStudent = new Student("               ", validStundentName, validGroup);
-        this.service.saveStudent("               ",validStundentName,validGroup);
-        Iterable<Student> students = this.service.findAllStudents();
-        boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
-                studentWasAdded = true;
-            }
-        assertFalse(studentWasAdded);
-    }
-
-    @Test
-    public void addStudent_Name_Empty(){
-        Student addedStudent = new Student(validStudentIdNr, "    ", validGroup);
-        this.service.saveStudent(validStudentIdNr,"    ",validGroup);
-        Iterable<Student> students = this.service.findAllStudents();
-        boolean studentWasAdded = false;
-        for(Student s : students)
-            if(s.equals(addedStudent))
-            {
-                studentWasAdded = true;
-            }
-        assertFalse(studentWasAdded);
-    }
-
-    @Test
-    public void addStudent_SameStudentTwice(){
-        this.service.saveStudent(validStudentIdNr,validStundentName,validGroup);
-        try{
-            this.service.saveStudent(validStudentIdNr,validStundentName,validGroup);
-            assertTrue( "Not unique students should not be added!", false);
+    public void addStudent_Name_Null() {
+        try {
+            this.service.saveStudent(validStudentIdNr, null, 938);
+            assertTrue("Student add should not work with null name!", false);
+        } catch (Exception e) {
+            assertTrue(true);
         }
-        catch (Exception e)
-        {
-            assertTrue(  true);
+    }
+
+    @Test
+    public void addStudent_Id_Empty() {
+        try {
+            this.service.saveStudent("               ", validStundentName, validGroup);
+            assertTrue("Invalid group exception should get thrown!", false);
+        } catch (Exception e) {
+            assertEquals("ID invalid! \n", e.getMessage());
+        }
+    }
+
+    @Test
+    public void addStudent_Name_Empty() {
+        try {
+            this.service.saveStudent(validStudentIdNr, "    ", validGroup);
+            assertTrue("Invalid group exception should get thrown!", false);
+        } catch (Exception e) {
+            assertEquals("Nume invalid! \n", e.getMessage());
+        }
+    }
+
+    @Test
+    public void addStudent_SameStudentTwice() {
+        this.service.saveStudent(validStudentIdNr, validStundentName, validGroup);
+        try {
+            this.service.saveStudent(validStudentIdNr, validStundentName, validGroup);
+            assertTrue("Not unique students should not be added!", false);
+        } catch (Exception e) {
+            assertTrue(true);
         }
         this.service.deleteStudent(validStudentIdNr);
     }
