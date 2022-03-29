@@ -92,7 +92,7 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
         }
         else
         {
-            throw new ValidationException("Student Existent!");
+            throw new ValidationException("Entitate existenta!");
         }
         return result;
     }
