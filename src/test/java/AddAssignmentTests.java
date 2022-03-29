@@ -12,8 +12,7 @@ import validation.StudentValidator;
 import validation.TemaValidator;
 import validation.Validator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AddAssignmentTests {
 
@@ -47,8 +46,8 @@ public class AddAssignmentTests {
     @Test
     public void addAssignment_nullAssignmentID(){
         try {
-            service.saveTema(null,validAssignmentDescription,validAssignmentStartWeek,validAssignmentEndWeek);
-            assertTrue("Assignment addition with null id should not be possible",false);
+            service.saveTema(null,validAssignmentDescription,validAssignmentEndWeek,validAssignmentStartWeek);
+            fail("Assignment addition with null id should not be possible");
         }
         catch (Exception e) {
             assertEquals("ID invalid! \n",e.getMessage());
@@ -58,8 +57,8 @@ public class AddAssignmentTests {
     @Test
     public void addAssignment_emptyAssignmentID(){
         try {
-            service.saveTema("",validAssignmentDescription,validAssignmentStartWeek,validAssignmentEndWeek);
-            assertTrue("Assignment addition with null id should not be possible",false);
+            service.saveTema("",validAssignmentDescription,validAssignmentEndWeek,validAssignmentStartWeek);
+            fail("Assignment addition with empty id should not be possible");
         }
         catch (Exception e) {
             assertEquals("ID invalid! \n",e.getMessage());
@@ -70,8 +69,8 @@ public class AddAssignmentTests {
     public void addAssignment_nullDescription()
     {
         try {
-            service.saveTema(validAssignmentId,null,validAssignmentStartWeek,validAssignmentEndWeek);
-            assertTrue("Assignment addition with null id should not be possible",false);
+            service.saveTema(validAssignmentId,null,validAssignmentEndWeek,validAssignmentStartWeek);
+            fail("Assignment addition with null id should not be possible");
         }
         catch (Exception e) {
             assertEquals("Descriere invalida! \n",e.getMessage());
@@ -82,13 +81,66 @@ public class AddAssignmentTests {
     public void addAssignment_emptyDescription()
     {
         try {
-            service.saveTema(validAssignmentId,"",validAssignmentStartWeek,validAssignmentEndWeek);
-            assertTrue("Assignment addition with null id should not be possible",false);
+            service.saveTema(validAssignmentId,"",validAssignmentEndWeek,validAssignmentStartWeek);
+            fail("Assignment addition with empty description should not be possible");
         }
         catch (Exception e) {
             assertEquals("Descriere invalida! \n",e.getMessage());
         }
     }
 
+    @Test
+    public void addAssignment_StartWeekNegative(){
+        try {
+            service.saveTema(validAssignmentId,validAssignmentDescription,validAssignmentEndWeek,-35);
+            fail("Assignment addition with negative start week should not be possible");
+        }
+        catch (Exception e) {
+            assertEquals("Data de primire invalida! \n",e.getMessage());
+        }
+    }
 
+    @Test
+    public void addAssignment_StartWeekGreatNumber(){
+        try {
+            service.saveTema(validAssignmentId,validAssignmentDescription,validAssignmentEndWeek,10000000);
+            fail("Assignment addition with negative end week should not be possible");
+        }
+        catch (Exception e) {
+            assertEquals("Data de primire invalida! \n",e.getMessage());
+        }
+    }
+
+    @Test
+    public void addAssignment_EndWeekNegative(){
+        try {
+            service.saveTema(validAssignmentId,validAssignmentDescription,-35,validAssignmentStartWeek);
+            fail("Assignment addition with negative end week should not be possible");
+        }
+        catch (Exception e) {
+            assertEquals("Deadline invalid! \n",e.getMessage());
+        }
+    }
+
+    @Test
+    public void addAssignment_EndWeekGreatNumber(){
+        try {
+            service.saveTema(validAssignmentId,validAssignmentDescription,10000,validAssignmentStartWeek);
+            fail("Assignment addition with negative end week should not be possible");
+        }
+        catch (Exception e) {
+            assertEquals("Deadline invalid! \n",e.getMessage());
+        }
+    }
+
+    @Test
+    public void addAssignment_ValidData_StartWeekGreaterThanEndWeek(){
+        try {
+            service.saveTema(validAssignmentId,validAssignmentDescription,2,4);
+            fail("Assignment addition with negative end week should not be possible");
+        }
+        catch (Exception e) {
+            assertEquals("Data de predare este mai mica decat data de primire! \n",e.getMessage());
+        }
+    }
 }
