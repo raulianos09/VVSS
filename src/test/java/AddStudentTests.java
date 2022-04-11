@@ -192,7 +192,7 @@ public class AddStudentTests {
             this.service.saveStudent(validStudentIdNr, validStundentName, validGroup);
             assertTrue("Not unique students should not be added!", false);
         } catch (Exception e) {
-            assertTrue(true);
+            assertEquals("Entitate existenta!", e.getMessage());
         }
         this.service.deleteStudent(validStudentIdNr);
     }
