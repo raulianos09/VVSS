@@ -1,6 +1,7 @@
 import domain.Nota;
 import domain.Student;
 import domain.Tema;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import repository.NotaXMLRepository;
@@ -142,5 +143,31 @@ public class AddAssignmentTests {
         catch (Exception e) {
             assertEquals("Data de predare este mai mica decat data de primire! \n",e.getMessage());
         }
+    }
+
+    @Test
+    public void addAssignment_ValidData(){
+        Tema addedTema = new Tema(validAssignmentId,validAssignmentDescription,validAssignmentEndWeek,validAssignmentStartWeek);
+        this.service.saveTema(validAssignmentId,validAssignmentDescription,validAssignmentEndWeek,validAssignmentStartWeek);
+        Iterable<Tema> teme = this.service.findAllTeme();
+        boolean temaWasAdded = false;
+        for (Tema t : teme)
+            if (t.equals(addedTema)) {
+                temaWasAdded = true;
+            }
+        Assert.assertTrue(temaWasAdded);
+        this.service.deleteTema(validAssignmentId);
+    }
+
+    @Test
+    public void addAssignment_SameAssignmentTwice() {
+        this.service.saveTema(validAssignmentId,validAssignmentDescription,validAssignmentEndWeek,validAssignmentStartWeek);
+        try {
+            this.service.saveTema(validAssignmentId,validAssignmentDescription,validAssignmentEndWeek,validAssignmentStartWeek);
+            assertTrue("Not unique assignments should not be added!", false);
+        } catch (Exception e) {
+            assertEquals("Entitate existenta!", e.getMessage());
+        }
+        this.service.deleteTema(validAssignmentId);
     }
 }
