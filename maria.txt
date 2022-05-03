@@ -1,0 +1,12 @@
+Tema: 1
+Nota: 7.5
+Predata in saptamana: 8
+Deadline: 7
+Feedback: too late
+
+Tema: 3
+Nota: 10.0
+Predata in saptamana: 5
+Deadline: 9
+Feedback: too early
+
