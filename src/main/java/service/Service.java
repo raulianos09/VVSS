@@ -53,9 +53,24 @@ public class Service {
 
             if (predata - deadline > 2) {
                 valNota =  1;
-            } else {
+            } else if (predata - deadline > 0) {
                 valNota =  valNota - 2.5 * (predata - deadline);
             }
+
+            Student student = this.studentXmlRepo.findOne(idStudent);
+            if (student == null) {
+                return -1;
+            }
+
+            Tema tema = this.temaXmlRepo.findOne(idTema);
+            if (tema == null) {
+                return -1;
+            }
+
+            if (predata < tema.getStartline()) {
+                return -1;
+            }
+
             Nota nota = new Nota(new Pair(idStudent, idTema), valNota, predata, feedback);
             Nota result = notaXmlRepo.save(nota);
 
