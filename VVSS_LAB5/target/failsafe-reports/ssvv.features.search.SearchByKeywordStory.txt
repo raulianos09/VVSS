@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ssvv.features.search.SearchByKeywordStory
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 11.176 s - in ssvv.features.search.SearchByKeywordStory

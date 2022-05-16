@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="ssvv.features.getApp.GetApp" skipped="0" tests="2" time="14.28" timestamp="2022-05-16 07:01:26"><testcase classname="ssvv.features.getApp.GetApp" name="Get app test DDT"><failure message="expected:&lt;[]&gt; but was:&lt;[23165464654321]&gt;" type="java.lang.AssertionError">expected:&lt;[]&gt; but was:&lt;[23165464654321]&gt;</failure><system-err>expected:&lt;[]&gt; but was:&lt;[23165464654321]&gt;&#13;
+ssvv.steps.serenity.EndUserSteps.should_see_number(EndUserSteps.java:40)&#13;
+ssvv.features.getApp.GetApp.getAppTestDDT(GetApp.java:42)&#13;
+</system-err></testcase></testsuite>

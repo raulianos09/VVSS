@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Search by keyword story","Searching by keyword banana should display the corresponding article","SUCCESS","2022-04-17T22:16:56.401+03:00[Europe/Athens]","0.0","5.23"
+"Search by keyword story","Searching by ambiguious keyword should display the disambiguation page","PENDING","2022-04-17T22:17:01.959+03:00[Europe/Athens]","0.0","0.17"
+"Search by keyword story","Searching by keyword apple should display the corresponding article","SUCCESS","2022-04-17T22:17:02.216+03:00[Europe/Athens]","0.0","2.92"
