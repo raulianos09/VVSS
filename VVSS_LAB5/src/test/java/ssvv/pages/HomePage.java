@@ -59,6 +59,6 @@ public class HomePage extends PageObject {
 
     public String getAppFieldText(){
         waitForElementToLoad(inputField);
-        return inputField.getText();
+        return inputField.getAttribute("value");
     }
 }

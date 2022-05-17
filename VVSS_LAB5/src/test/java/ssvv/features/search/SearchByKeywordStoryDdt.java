@@ -10,6 +10,7 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.annotations.Qualifier;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,11 @@ public class SearchByKeywordStoryDdt {
 
     @ManagedPages(defaultUrl = "https://www.emag.ro/")
     public Pages pages;
+
+    @Before
+    public void initDriver(){
+        webdriver.manage().window().maximize();
+    }
 
     public String numeProdus;
     public String descriereProdus;

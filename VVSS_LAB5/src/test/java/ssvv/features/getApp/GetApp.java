@@ -10,6 +10,7 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.annotations.Qualifier;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +28,11 @@ public class GetApp {
     @ManagedPages(defaultUrl = "https://www.emag.ro/")
     public Pages pages;
 
+    @Before
+    public void initDriver(){
+        webdriver.manage().window().maximize();
+    }
+
     public String numeProdus;
     public String descriereProdus;
 
@@ -38,9 +44,9 @@ public class GetApp {
     @Steps
     public EndUserSteps endUser;
 
-    @Issue("#EMAG-1")
+    @Issue("#EMAG-2")
     @Test
-    public void searchEmagByKeywordTestDDT() {
+    public void geAppEmagByKeywordTestDDT() {
         endUser.is_the_home_page();
         endUser.getApp(getName());
         endUser.should_see_number(getDescription());
